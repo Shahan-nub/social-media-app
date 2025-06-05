@@ -15,8 +15,7 @@ import CaptionWithToggle from "./CaptionWithToggel";
 
 const urlEndPoint = process.env.NEXT_PUBLIC_URL_ENDPOINT!;
 
-type Props = {};
-export const HomePageVideos = (props: Props) => {
+export const HomePageVideos = () => {
   const [videos, setVideos] = useState<IVideo[]>([]);
   const getVideos = async () => {
     try {

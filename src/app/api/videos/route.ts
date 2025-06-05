@@ -16,6 +16,7 @@ export async function GET() {
     return NextResponse.json(videos);
     
   } catch (error) {
+    console.log(error);
     return NextResponse.json(
       { error: "Failed to fetch videos from db." },
       { status: 500 }
@@ -63,6 +64,7 @@ export async function POST(request: NextRequest) {
     const newVideo = await Video.create(videoData);
     return NextResponse.json(newVideo);
   } catch (error) {
+    console.log(error);
     return NextResponse.json(
       { error: "Failed to create new video." },
       { status: 500 }

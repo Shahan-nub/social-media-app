@@ -15,8 +15,7 @@ import CaptionWithToggle from "./CaptionWithToggel";
 
 const urlEndPoint = process.env.NEXT_PUBLIC_URL_ENDPOINT!;
 
-type Props = {};
-export const HomePagePhotos = (props: Props) => {
+export const HomePagePhotos = () => {
   const [photos, setPhotos] = useState<IPhoto[]>([]);
 
   const getPhotos = async () => {

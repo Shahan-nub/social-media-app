@@ -16,6 +16,7 @@ export async function GET() {
 
     return NextResponse.json(photos);
   } catch (error) {
+    console.log(error)
     return NextResponse.json(
       { error: "Failed to fetch photos from db." },
       { status: 500 }
@@ -62,6 +63,7 @@ export async function POST(request: NextRequest) {
     const newPhoto = await Photo.create(photoData);
     return NextResponse.json(newPhoto);
   } catch (error) {
+    console.log(error);
     return NextResponse.json(
       { error: "Failed to create new photo." },
       { status: 500 }

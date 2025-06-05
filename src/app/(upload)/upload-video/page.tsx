@@ -1,6 +1,5 @@
 "use client";
 import UploadExample from "@/components/UploadVideo";
-import { SessionProvider } from "next-auth/react";
 import React from "react";
 
 const UploadVideo = () => {

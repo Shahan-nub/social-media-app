@@ -32,7 +32,7 @@ const UploadPhotoForm = () => {
   const [description, setDescription] = useState("");
   const router = useRouter();
 
-  const { data: session, status } = useSession();
+  const { status } = useSession();
   
   // console.log(session);
   // console.log(status);
@@ -116,7 +116,7 @@ const UploadPhotoForm = () => {
 
       console.log(photoUrl);
       // Now send to backend
-      const res = await fetch("/api/photos", {
+      await fetch("/api/photos", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

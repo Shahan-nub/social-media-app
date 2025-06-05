@@ -1,14 +1,12 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { use, useState } from "react";
+import { useState } from "react";
 import { toast } from "sonner";
 import axios from "axios";
 import {
   Card,
-  CardAction,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,

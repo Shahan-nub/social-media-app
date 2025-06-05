@@ -1,7 +1,6 @@
 "use client";
 import {
   Aperture,
-  Calendar,
   ChevronUp,
   Home,
   Image,
@@ -68,7 +67,7 @@ const items = [
 ];
 
 export function AppSidebar() {
-  const { data: session, status } = useSession();
+  const { data: session} = useSession();
   
   const email = session?.user.email;
 
@@ -91,7 +90,7 @@ export function AppSidebar() {
     };
 
     if(email) getUser();
-  }, [email]);
+  }, [email, dispatch]);
 
   // console.log(username);
   const handleSignout = async () => {
@@ -99,6 +98,7 @@ export function AppSidebar() {
       await signOut();
       toast.success("Signed out successfully.");
     } catch (error) {
+      console.log(error);
       toast.error("Failed to sign out");
     }
   };

@@ -30,6 +30,7 @@ export async function POST(request: NextRequest) {
         );
 
     } catch (error) {
+        console.log(error);
         return NextResponse.json(
             {error: "Failed to login the user."},
             {status:500}

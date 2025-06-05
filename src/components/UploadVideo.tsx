@@ -32,7 +32,7 @@ const UploadExample = () => {
   const [description, setDescription] = useState("");
   const router = useRouter();
 
-  const { data: session, status } = useSession();
+  const { status } = useSession();
   // console.log(session);
   // console.log(status);
 
