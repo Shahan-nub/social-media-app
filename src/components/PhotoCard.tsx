@@ -30,6 +30,10 @@ const PhotoCard = ({ photo, activeUserEmail, urlEndPoint }: PhotoCardProps) => {
 
   const handleLike = async () => {
     try {
+      if (!activeUserEmail) {
+        toast.error("Login to like.");
+        return;
+      }
       const res = await axios.post("/api/like-photo", {
         photoId: photo._id?.toString(),
         activeUserEmail,

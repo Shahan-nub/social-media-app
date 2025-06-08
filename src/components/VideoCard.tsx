@@ -37,6 +37,12 @@ const VideoCard = ({
 
   const handleLike = async () => {
     try {
+
+      if(!activeUserEmail){
+        toast.error("Login to like.")
+        return;
+      }
+
       const res = await axios.post("/api/like-video", {
         videoId: video._id?.toString(),
         activeUserEmail,
