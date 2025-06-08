@@ -1,5 +1,5 @@
 import mongoose, { model, models, Schema } from "mongoose";
-import { title } from "process";
+import { IComment } from "./Photo";
 
 export const VIDEO_DIMENSIONS = {
   width: 1080,
@@ -14,6 +14,9 @@ export interface IVideo {
   videoUrl: string;
   thumbnailUrl: string;
   controls?: boolean;
+  likedBy?: string[]; 
+  likeCount?: number;
+  comments?: IComment[];
   transformation?: {
     height: number;
     width: number;
@@ -27,10 +30,19 @@ const videoSchema = new Schema<IVideo>(
   {
     title: { type: String, required: true },
     description: { type: String, required: true },
-    email: {type: String, required: true},
+    email: { type: String, required: true },
     videoUrl: { type: String, required: true },
     thumbnailUrl: { type: String, required: true },
     controls: { type: Boolean, default: true },
+    likedBy: [{ type: String, default: [] }], 
+    likeCount: {type: Number, default: 0},
+    comments: [
+      {
+        email: {type: String, required:true},
+        text: {type: String, required: true},
+        createdAt: {type: Date, default: Date.now}
+      }
+    ],
     transformation: {
       height: { type: Number, default: VIDEO_DIMENSIONS.height },
       width: { type: Number, default: VIDEO_DIMENSIONS.width },

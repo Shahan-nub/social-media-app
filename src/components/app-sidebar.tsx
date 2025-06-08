@@ -36,6 +36,7 @@ import Link from "next/link";
 import axios from "axios";
 import { setUser } from "@/lib/features/userSlice";
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 // Menu items.
 const items = [
@@ -102,6 +103,9 @@ export function AppSidebar() {
       toast.error("Failed to sign out");
     }
   };
+
+  const pathname = usePathname();
+
   return (
     <Sidebar>
       <SidebarHeader>
@@ -118,7 +122,7 @@ export function AppSidebar() {
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <Link href={item.url} className="flex items-center gap-2">
+                    <Link href={item.url} className={`flex items-center gap-2  ${pathname === item.url ? "text-white font-semibold" : "text-[#a3a4a5]"} `}>
                       <item.icon />
                       <span>{item.title}</span>
                     </Link>
@@ -144,15 +148,22 @@ export function AppSidebar() {
                 className="w-[--radix-popper-anchor-width]"
               >
                 {session && (
+                <>
                   <DropdownMenuItem>
-                    <div className="" onClick={handleSignout}>
+                    <span>{email}</span>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <div className="w-full" onClick={handleSignout}>
                       Sign out
                     </div>
                   </DropdownMenuItem>
+                </>
                 )}
                 {!session && (
                   <DropdownMenuItem>
-                    <Link href="/login">Login</Link>
+                    <Link href="/login" className="w-full">
+                    Login
+                     </Link>
                   </DropdownMenuItem>
                 )}
               </DropdownMenuContent>

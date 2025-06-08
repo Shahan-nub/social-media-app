@@ -5,12 +5,12 @@ const CaptionWithToggle = ({ description }: { description: string }) => {
 
   return (
     <div className="flex text-xs lg:text-sm my-2">
-      <p className="font-medium  mr-1">Caption:</p>
+      <p className="font-medium mr-1">Caption: </p>
       <div className="flex flex-col my-auto">
-        <p className={`${expanded ? '' : 'line-clamp-2'} text-sm`}>
+        <p className={`${expanded ? '' : 'line-clamp-2'} `}>
           {description}
         </p>
-        {description.length > 40 && (
+        {description.length > 100 && (
           <button
             className="text-blue-500 max-sm:hidden text-xs mt-1 hover:underline self-start"
             onClick={() => setExpanded(!expanded)}
