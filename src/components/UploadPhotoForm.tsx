@@ -65,6 +65,18 @@ const UploadPhotoForm = () => {
   };
 
   const handleUpload = async () => {
+    //validate title and desc
+    if(title.length === 0){
+      toast.error("Please enter a title before uploading.");
+      return;
+    }
+
+    if(description.length === 0){
+      toast.error("Please enter a description before uploading.");
+      return;
+    }
+
+
     // Access the file input element using the ref
     const fileInput = fileInputRef.current;
     if (!fileInput || !fileInput.files || fileInput.files.length === 0) {
